@@ -1,17 +1,16 @@
 #include <stdio.h>
 
 /**
- * main - Simple calculator with addition, subtraction,
- * multiplication, and menu loop.
+ * main - Simple calculator with four arithmetic operations.
  *
- * Return: Always 0.
+ * Return: 0 on success, 1 on input error.
  */
 int main(void)
 {
     int choice;
-    int a;
-    int b;
-    int result;
+    double a;
+    double b;
+    double result;
 
     printf("Simple Calculator\n");
 
@@ -43,27 +42,40 @@ int main(void)
             continue;
         }
 
-        if (choice >= 1 && choice <= 3)
+        printf("A: ");
+        fflush(stdout);
+        if (scanf("%lf", &a) != 1)
+            return (1);
+
+        printf("B: ");
+        fflush(stdout);
+        if (scanf("%lf", &b) != 1)
+            return (1);
+
+        if (choice == 1)
         {
-            printf("A: ");
-            fflush(stdout);
-            if (scanf("%d", &a) != 1)
-                return (1);
-
-            printf("B: ");
-            fflush(stdout);
-            if (scanf("%d", &b) != 1)
-                return (1);
-
-            if (choice == 1)
-                result = a + b;
-            else if (choice == 2)
-                result = a - b;
-            else
-                result = a * b;
-
-            printf("Result: %d\n", result);
+            result = a + b;
         }
+        else if (choice == 2)
+        {
+            result = a - b;
+        }
+        else if (choice == 3)
+        {
+            result = a * b;
+        }
+        else
+        {
+            if (b == 0.0)
+            {
+                printf("Error: division by zero\n");
+                continue;
+            }
+
+            result = a / b;
+        }
+
+        printf("Result: %g\n", result);
     }
 
     return (0);
