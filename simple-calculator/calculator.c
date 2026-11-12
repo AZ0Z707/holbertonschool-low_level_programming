@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 /**
- * main - Simple calculator with addition and subtraction.
+ * main - Simple calculator with addition, subtraction,
+ * multiplication, and menu loop.
  *
  * Return: Always 0.
  */
@@ -42,7 +43,7 @@ int main(void)
             continue;
         }
 
-        if (choice == 1 || choice == 2)
+        if (choice >= 1 && choice <= 3)
         {
             printf("A: ");
             fflush(stdout);
@@ -56,8 +57,10 @@ int main(void)
 
             if (choice == 1)
                 result = a + b;
-            else
+            else if (choice == 2)
                 result = a - b;
+            else
+                result = a * b;
 
             printf("Result: %d\n", result);
         }
